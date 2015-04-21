@@ -1,5 +1,9 @@
-// imported as dependency immediately after original variables in root materialize.scss
+/* imported as dependency immediately after original variables in materialize.scss */
 
+/*** Colors ***/
+// note: colors are set in main _variables.scss, because setting color here requires to also overwrite all other variables that depend on that color.
+
+/*** Buttons ***/
 
 // custom breakpoints
 $large-screen-up: 1401px;
@@ -12,9 +16,7 @@ $xlarge-and-up: "only screen and (min-width : #{$large-screen-up})";
 $navbar-height: 50px;
 $navbar-height-mobile: 50px;
 
-
 /*** Cards ***/
 $card-padding: 0.5rem;
 
-// input label highlights, etc
-$secondary-color: color("orange", "base");
+
