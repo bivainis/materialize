@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+/*
+ * custom variables override default variables
+ */
+
+
 // Mixins
 @import "components/prefixer";
 @import "components/mixins";
@@ -7,6 +12,7 @@
 
 // Variables;
 @import "components/variables";
+@import "custom-variables"; // custom vars
 
 // Reset
 @import "components/normalize";
@@ -36,3 +42,8 @@
 @import "components/date_picker/default.scss";
 @import "components/date_picker/default.date.scss";
 @import "components/date_picker/default.time.scss";
+
+// custom extensions
+@import "custom-component-overrides";
+@import "materialize-extend";
+

@@ -1,0 +1,406 @@
+/*
+ * Extending Materialize.css
+ * @author Gediminas Bivainis <gediminas@knapnokgames.com>
+ * @company Knapnok Games http://www.knapnokgames.ocm
+ */
+
+
+// full height for html, body and the first row to enable vertical centering
+html.full-height {
+  &, body, body > .row.valign-wrapper {
+
+    height:100%;
+  }
+  body > .row.valign-wrapper {
+    margin-bottom: 0;
+  }
+}
+
+.row.full-height,
+.col.full-height,
+.valign-wrapper.full-height {
+  height: 100%;
+}
+// adding xl breakpoint
+.container {
+  max-width: 1440px;
+}
+@media #{$medium-and-up} {
+  .container {
+    width: 96%;
+  }
+}
+@media #{$large-and-up} {
+  .container {
+    width: 96%;
+  }
+}
+
+.row {
+  .col {
+
+    @media #{$xlarge-and-up} {
+
+      $i: 1;
+      @while $i <= $num-cols {
+        $perc: unquote((100 / ($num-cols / $i)) + "%");
+        &.xl#{$i} {
+          width: $perc;
+          margin-left: 0;
+        }
+        $i: $i + 1;
+      }
+      $i: 1;
+      @while $i <= $num-cols {
+        $perc: unquote((100 / ($num-cols / $i)) + "%");
+        &.offset-xl#{$i} {
+          margin-left: $perc;
+        }
+        $i: $i + 1;
+      }
+    }
+  }
+}
+
+// Positioning
+.valign-wrapper {
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.full-width {
+  width:100%;
+}
+
+.btn.full-width {
+  width:100%;
+  i {
+    position: absolute;
+    right:3%;
+  }
+}
+.text-small {
+  font-size: 0.5em;
+}
+.card-icon-label {
+  i {
+    font-size: 2em;
+  }
+}
+
+.row.no-margin {
+  margin-bottom: 0;
+}
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+a.zocial.facebook {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  display: block;
+  font-weight: bold;
+  text-align: center;
+  font-family: 'Helvetica Neue', Helvetica, Verdana, Arial, sans-serif;
+  text-transform: none;
+  background-color: #3c5b9a;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0MDhEMkNEOUQ3NjgxMUUyOTk3N0IyMzY5MEM4NjgwMCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0MDhEMkNEQUQ3NjgxMUUyOTk3N0IyMzY5MEM4NjgwMCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQwOEQyQ0Q3RDc2ODExRTI5OTc3QjIzNjkwQzg2ODAwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjQwOEQyQ0Q4RDc2ODExRTI5OTc3QjIzNjkwQzg2ODAwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+BUB0NgAAATxJREFUeNpiZIACm+hZCUBKgWFogQOMUMfvB1IODEMQMAEdbzBUHQ/2ABALMAxhwMQwxMGoB0Y9QCFgGUjLPe3UGGyN5RkMNaUYeLjYcKprm3WQYfuhW4PHA6rywgyVafZgmhggKcI7eGIA5OhJ1T54Q3zQ5gGQo6npeLp7IC/WkqqOp6sHQA73tFUbusUoqKQZ0sUooRLny7dfDJOWHMdZXA6KJIQPkON4unpAhUAMnL/+fGg3JV68/jzamBv1wLBojRpqSpJVCuHSBwK3H74FF7N08QCorUNtfXmtW3CWUkMiCeErYkcz8UCG/mgM0ANcGO4xQPViFFTkYQO5MZZ4m9S49IHqALp6AFemw1URDZvW6GhjbtQDox4Y9cCoB0Y9MOqBUQ+MemDUA0PQA0eWph0A9dyGqgcAAgwAN5FN6jzKOA4AAAAASUVORK5CYII=);
+  background-position: 4px bottom;
+  background-repeat: no-repeat;
+  background-size: 36px;
+  color: #fff;
+  padding: 8px 15px 8px 18px;
+  margin-right: 0;
+  width:100%;
+}
+a.zocial.facebook:hover {
+  text-decoration: underline;
+}
+
+.app-title {
+  display: inline;
+}
+
+.login-container {
+  max-width: 500px;
+}
+.card {
+  .card-title.small {
+    font-size: 16px;
+  }
+  .card-content {
+    .card-title {
+      color: inherit;
+      line-height: inherit;
+    }
+  }
+  &.horizontal {
+    .card-image {
+      width: 50%;
+
+      float: left;
+      height: auto;
+      position: relative;
+      > i {
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        z-index: 1;
+      }
+
+      img {
+        border-radius: 2px 0 0 2px;
+        display:block; //remove mysterious margin below image
+      }
+    }
+    .card-content {
+      float: left;
+      width: 50%;
+      box-sizing: border-box;
+      padding: 0 0.75rem;
+    }
+  }
+  &.small.horizontal {
+    .card-image {
+      height: 173px;
+    }
+  }
+  .card-action {
+    .btn {
+      margin-bottom:0;
+    }
+  }
+  &.small.fixed-width {
+    width:170px;
+    height: 340px;
+    .card-image {
+      height: 100%;
+      .card-hover {
+        opacity: 0;
+        background-color: rgba(white,0.87);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 16px;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        -ms-transition: all 0.3s;
+        transition: all 0.3s;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+    .card-content {
+      overflow: hidden;
+      height: auto;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      .progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin-bottom: 0;
+      }
+    }
+    .card-reveal {
+      height:(2/3 * 100)+0%;
+      width: 100%;
+
+    }
+  }
+}
+.inline-form-input {
+  display: inline-block;
+  height: 3rem;
+  padding: 0.8rem 0 0.8rem 2rem;
+}
+
+// helpers
+
+// truncate string, add ellipsis to the end
+.truncate {
+  //width must be set on the element
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.progress {
+  height: 4px;
+  background: #c8c8c8;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.progress-bar {
+  box-shadow: none;
+  float: left;
+  width: 0;
+  height: 100%;
+  font-size: 12px;
+  line-height: 20px;
+  color: #fff;
+  text-align: center;
+  background-color: #428bca;
+  -webkit-transition: width .6s ease;
+  -o-transition: width .6s ease;
+  transition: width .6s ease;
+}
+img.responsive-img {
+  display: block;
+}
+.row {
+  .row-table {
+    display: table;
+    width:100%;
+    .col.col-cell {
+      display: table-cell;
+      float: none;
+      vertical-align: top;
+    }
+  }
+  .col-inline {
+    float:none !important;
+    display: inline-block;
+  }
+}
+.header-fixed {
+  position: fixed;
+  height: 50px;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.tabs {
+  li.tab {
+    a {
+      color: lighten(color("orange", "darken-3"), 18%);
+      &:hover {
+        color: color("orange", "darken-3");
+      }
+    }
+  }
+  .indicator {
+    background-color: color("orange", "darken-2") !important;
+  }
+}
+
+.divider {
+  &.vertical {
+    width: 1px;
+    height: auto;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+
+.adjust-for-fixed-nav {
+  padding-top: 50px;
+}
+
+.togglebutton {
+  vertical-align: middle;
+  &, * {
+    user-select: none;
+  }
+  label {
+    font-weight: 400;
+    cursor: pointer;
+    // Hide original checkbox
+    input[type=checkbox]:first-child {
+      opacity: 0;
+      width: 0;
+      height:0;
+    }
+    // Switch bg on
+    input[type=checkbox]:first-child:checked + .toggle {
+      background-color: rgba(#f57c00, 0.5);
+      // Handle on
+      &:after {
+        background-color: white;
+
+      }
+    }
+    input[type=checkbox]:first-child:checked + .toggle + span {
+      color: #f57c00;
+
+    }
+    // Switch bg off and disabled
+    .toggle,
+    input[type=checkbox][disabled]:first-child + .toggle {
+      content: "";
+      display: inline-block;
+      width: 30px;
+      height: 15px;
+      background-color: rgba(80, 80, 80, 0.7);
+      border-radius: 15px;
+      margin-right: 10px;
+      transition: background 0.3s ease;
+      vertical-align: middle;
+    }
+    // Handle off
+    .toggle:after {
+      content: "";
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: #F1F1F1;
+      border-radius: 20px;
+      position: relative;
+      box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4);
+      left: -5px;
+      top: -2px;
+      transition: left 0.3s ease, background 0.3s ease, box-shadow 0.1s ease;
+    }
+    // Handle disabled
+    input[type=checkbox][disabled]:first-child + .toggle:after,
+    input[type=checkbox][disabled]:checked:first-child + .toggle:after{
+      background-color: #BDBDBD;
+    }
+    // Ripple on
+    input[type=checkbox]:first-child:checked ~ .toggle:active:after {
+      box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4), 0 0 0 15px rgba(#f57c00, 0.1);
+    }
+    // Ripple off and disabled
+    input[type=checkbox]:first-child ~ .toggle:active:after,
+    input[type=checkbox][disabled]:first-child ~ .toggle:active:after {
+      box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4), 0 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    input[type=checkbox]:first-child:checked + .toggle:after {
+      left: 15px;
+    }
+  }
+}
+
+.select-wrapper span.select-dropdown {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 15px;
+}
+
+.dropdown-content li>a,
+.dropdown-content li>span {
+  padding: 0.75rem 1rem;
+}

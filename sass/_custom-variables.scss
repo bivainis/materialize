@@ -1,0 +1,20 @@
+// imported as dependency immediately after original variables in root materialize.scss
+
+
+// custom breakpoints
+$large-screen-up: 1401px;
+$large-screen: 1400px;
+
+// adding additional breakpoint for xl screens
+$xlarge-and-up: "only screen and (min-width : #{$large-screen-up})";
+
+/*** Navbar ***/
+$navbar-height: 50px;
+$navbar-height-mobile: 50px;
+
+
+/*** Cards ***/
+$card-padding: 0.5rem;
+
+// input label highlights, etc
+$secondary-color: color("orange", "base");

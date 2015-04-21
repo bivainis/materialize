@@ -1,0 +1,13 @@
+/*
+ * _navbar.scss
+ */
+nav {
+
+  .brand-logo {
+
+    img {
+      vertical-align: text-bottom;
+      height: ($navbar-height / 2);
+    }
+  }
+}
