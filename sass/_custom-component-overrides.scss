@@ -3,6 +3,11 @@
  */
 nav {
 
+  ul {
+    a {
+      display: inline-block; // fix IE collapsing
+    }
+  }
   .brand-logo {
 
     img {
