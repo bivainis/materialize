@@ -59,30 +59,43 @@
       if (options.constrain_width === true) {
         activates.css('width', origin.outerWidth());
       }
-      var offset = 0;
-      if (options.belowOrigin === true) {
-        offset = origin.height();
-      }
-
-      // Handle edge alignment
-      var offsetLeft = origin.offset().left;
-      var width_difference = 0;
-      var gutter_spacing = options.gutter;
-
-
-      if (offsetLeft + activates.innerWidth() > $(window).width()) {
-        width_difference = origin.innerWidth() - activates.innerWidth();
-        gutter_spacing = gutter_spacing * -1;
-      }
 
       // Position dropdown
-      activates.css({
-        position: 'absolute',
-        top: origin.position().top + offset,
-        left: origin.position().left + width_difference + gutter_spacing
-      });
+      var items = activates.children();
+      var heightEstimate = items.length * origin.height();
+      var bb = origin[0].getBoundingClientRect();
+      if (window.innerHeight < bb.top + heightEstimate) {
+          var diff = (window.innerHeight - heightEstimate) / 2;
+          var verticalMargin = 0.05*window.innerHeight;
+          activates.css({
+              "max-height": window.innerHeight-2*verticalMargin,
+              "position": "fixed",
+              "left": bb.left,
+              "margin-top": diff > 0 ? diff+"px" : verticalMargin +"px"
+          });
+
+      } else {
+          var offset = 0;
+          if (options.belowOrigin === true) {
+              offset = origin.height();
+          }
+
+          // Handle edge alignment
+          var offsetLeft = origin.offset().left;
+          var width_difference = 0;
+          var gutter_spacing = options.gutter;
 
 
+          if (offsetLeft + activates.innerWidth() > $(window).width()) {
+              width_difference = origin.innerWidth() - activates.innerWidth();
+              gutter_spacing = gutter_spacing * -1;
+          }
+          activates.css({
+              position: 'absolute',
+              top: origin.position().top + offset,
+              left: origin.position().left + width_difference + gutter_spacing
+          });
+      }
 
       // Show dropdown
       activates.stop(true, true).css('opacity', 0)
