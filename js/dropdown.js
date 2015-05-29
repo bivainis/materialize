@@ -71,7 +71,7 @@
               "max-height": window.innerHeight-2*verticalMargin,
               "position": "fixed",
               "left": bb.left,
-              "margin-top": diff > 0 ? diff+"px" : verticalMargin +"px"
+              "top": diff > 0 ? diff+"px" : verticalMargin +"px"
           });
 
       } else {
