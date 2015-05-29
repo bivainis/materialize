@@ -185,16 +185,24 @@ a.zocial.facebook:hover {
     width:170px;
     height: 340px;
     .card-image {
-      height: 302px;
+      height: 300px;
       .card-hover {
         opacity: 0;
         background-color: rgba(white,0.90);
-        box-shadow: inset 0 0 50px -25px rgba(50,50,50,.87);
+        background: rgb(255,255,255);
+        background: -moz-linear-gradient(top,  rgba(255,255,255,0.95) 50%, rgba(255,255,255,0.75) 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,rgba(255,255,255,0.95)), color-stop(100%,rgba(255,255,255,0.75)));
+        background: -webkit-linear-gradient(top,  rgba(255,255,255,0.95) 50%,rgba(255,255,255,0.75) 100%);
+        background: -o-linear-gradient(top,  rgba(255,255,255,0.95) 50%,rgba(255,255,255,0.75) 100%);
+        background: -ms-linear-gradient(top,  rgba(255,255,255,0.95) 50%,rgba(255,255,255,0.75) 100%);
+        background: linear-gradient(to bottom,  rgba(255,255,255,0.95) 50%,rgba(255,255,255,0.75) 100%);
+        //filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 );
+
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
-        bottom: 0;
+        bottom: -1px;
         padding: 16px;
         -webkit-transition: all 0.3s;
         -moz-transition: all 0.3s;
@@ -208,7 +216,7 @@ a.zocial.facebook:hover {
     }
     .card-content {
       overflow: hidden;
-      height: auto;
+      height: 40px;
       position: absolute;
       bottom: 0;
       left: 0;
