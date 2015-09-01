@@ -14,7 +14,8 @@
       constrain_width: true, // Constrains width of dropdown to the activator
       hover: false,
       gutter: 0, // Spacing from edge
-      belowOrigin: false
+      belowOrigin: false,
+      alignRight: false
     };
 
     this.each(function(){
@@ -37,6 +38,8 @@
         options.gutter = origin.data('gutter');
       if (origin.data('beloworigin') !== undefined)
         options.belowOrigin = origin.data('beloworigin');
+      if (origin.data('alignright') !== undefined)
+        options.alignRight = origin.data('alignright');
     }
 
     updateOptions();
@@ -95,6 +98,14 @@
               top: origin.position().top + offset,
               left: origin.position().left + width_difference + gutter_spacing
           });
+
+        // override css if dropdown alignment is set to 'right'
+          if(options.alignRight == true) {
+            activates.css({
+              left: 'auto',
+              right: Math.round(window.innerWidth - bb.right + 1)
+            });
+          }
       }
 
       // Show dropdown
