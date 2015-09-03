@@ -466,3 +466,11 @@ img.responsive-img {
     }
   }
 }
+.collection .collection-item.avatar.avatar-large {
+  padding-left: 100px;
+}
+.collection .collection-item.avatar.avatar-large .circle {
+  width: 70px;
+  height: 70px;
+  margin-top: 10px;
+}
