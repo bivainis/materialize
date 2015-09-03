@@ -466,11 +466,27 @@ img.responsive-img {
     }
   }
 }
-.collection .collection-item.avatar.avatar-large {
-  padding-left: 100px;
-}
-.collection .collection-item.avatar.avatar-large .circle {
-  width: 70px;
-  height: 70px;
-  margin-top: 10px;
+.collection {
+  // ability to split collection into columns (adjust borders mainly)
+  &.collection-split {
+    border-bottom: none;
+    border-right: none;
+    border-radius: 0;
+    .collection-item {
+      border-right: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+  }
+  // bigger avatar in collection items .avatar-large
+  .collection-item.avatar {
+    &.avatar-large {
+      padding-left: 100px;
+      padding-bottom: 10px;
+      .circle {
+        width: 70px;
+        height: 70px;
+        margin-top: 10px;
+      }
+    }
+  }
 }
