@@ -500,3 +500,12 @@ img.responsive-img {
     }
   }
 }
+
+textarea.browser-default {
+  background-color: white;
+  border-color: #BDBDBD;
+  height: auto;
+  &:focus {
+    outline: 1px solid orange;
+  }
+}
