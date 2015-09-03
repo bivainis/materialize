@@ -273,7 +273,9 @@
             }
 
             var imgUrl = '';
+            var listClass = '';
             var spanClass = '';
+            var iconClass = '';
 
             // Create Dropdown structure
             selectOptions.each(function () {
@@ -281,12 +283,16 @@
                 // add image url and image class on list elements
                 if ($(this).attr('image-url')) {
                     imgUrl = $(this).attr('image-url');
-                }
-                if (imgUrl != '') {
-                    spanClass = 'has-image';
+                    if (imgUrl != '') {
+                        listClass = 'has-image';
+                        iconClass = 'hidden'
+                    }
+                } else if ($(this).attr('action-icon')) {
+                    listClass = 'has-action-icon';
+                    iconClass = $(this).attr('action-icon');
                 }
 
-                options.append($('<li class="' + (($(this).is(':disabled')) ? 'disabled' : '') + ' ' + spanClass + '"><span style="background-image:url(' + imgUrl + ')" class="' + spanClass + '">' + $(this).html() + '</span></li>'));
+                options.append($('<li class="' + (($(this).is(':disabled')) ? 'disabled' : '') + ' ' + listClass + '"><span style="background-image:url(' + imgUrl + ')"><i class="' + iconClass + '"></i>' + $(this).html() + '</span></li>'));
             });
 
 

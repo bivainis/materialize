@@ -423,6 +423,10 @@ img.responsive-img {
   padding: 0.75rem 1rem;
 }
 .dropdown-content {
+  li.disabled {
+    background-color: #f3f3f3;
+    border-bottom: 1px solid #d6d6d6;
+  }
   li {
     &.has-image {
       &:not(:first-child) {
@@ -433,6 +437,23 @@ img.responsive-img {
         background-repeat: no-repeat;
         padding-left: 45px !important;
         background-position: 5px 5px;
+      }
+    }
+    &.has-action-icon {
+      > span {
+        padding-top: 15px !important;
+        padding-bottom: 15px !important;
+        padding-left: 0 !important;
+        vertical-align: middle;
+        i {
+          font-size: 50px;
+          width:45px;
+          vertical-align: middle;
+          color: $off-black;
+          &:before {
+            width: 45px;
+          }
+        }
       }
     }
   }
