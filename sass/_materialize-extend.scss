@@ -418,6 +418,30 @@ img.responsive-img {
   padding-right: 15px;
 }
 
+.select-wrapper input.select-dropdown {
+  &.has-select-image {
+    padding-left: 25px;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: 15px;
+    box-sizing: border-box;
+    margin-right: 0;
+  }
+}
+
+.select-image {
+  background-color: silver; // default bg
+  display: block;
+  width: 20px;
+  height: 33px;
+  position: absolute;
+  margin-top: 5px;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
 .dropdown-content li>a,
 .dropdown-content li>span {
   padding: 0.75rem 1rem;

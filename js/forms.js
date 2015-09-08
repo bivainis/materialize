@@ -246,6 +246,7 @@
                 $select.parent().find('i').remove();
                 $select.parent().find('input').remove();
                 $select.parent().find('img').remove();
+                $select.parent().find('span').remove();
 
                 $select.unwrap();
                 $('ul#select-options-' + lastID).remove();
@@ -267,14 +268,12 @@
             var label;
             if ($select.find('option:selected') !== undefined) {
                 label = $select.find('option:selected');
-            }
-            else {
+            } else {
                 label = options.first();
             }
 
             var imgUrl = '';
             var listClass = '';
-            var spanClass = '';
             var iconClass = '';
 
             // Create Dropdown structure
@@ -285,14 +284,14 @@
                     imgUrl = $(this).attr('image-url');
                     if (imgUrl != '') {
                         listClass = 'has-image';
-                        iconClass = 'hidden'
+                        iconClass = 'hidden';
                     }
                 } else if ($(this).attr('action-icon')) {
                     listClass = 'has-action-icon';
                     iconClass = $(this).attr('action-icon');
                 }
 
-                options.append($('<li class="' + (($(this).is(':disabled')) ? 'disabled' : '') + ' ' + listClass + '"><span style="background-image:url(' + imgUrl + ')"><i class="' + iconClass + '"></i>' + $(this).html() + '</span></li>'));
+                options.append($('<li class="' + (($(this).is(':disabled')) ? 'disabled' : '') + ' ' + listClass + '" data-img-url="' + imgUrl + '"><span style="background-image:url(' + imgUrl + ')"><i class="' + iconClass + '"></i>' + $(this).html() + '</span></li>'));
             });
 
 
@@ -305,6 +304,11 @@
                         // Trigger onchange() event
                         $curr_select.trigger('change');
                         $curr_select.siblings('input.select-dropdown').val($(this).text());
+
+                        // change select inputs preview image on click
+                        if (imgUrl != '') {
+                            $(this).closest('.select-wrapper').find('.select-image').removeClass('select-empty').css('background-image', 'url(' + $(this).attr('data-img-url') + ')' );
+                        }
 
                         if (typeof callback !== 'undefined') callback();
                     }
@@ -323,6 +327,13 @@
                 + ' data-activates="select-options-' + uniqueID + '" value="' + label.html() + '"/>');
             $select.before($newSelect);
             $newSelect.before(dropdownIcon);
+
+            if (imgUrl != '') {
+
+                var imgPreviewUrl = $select.find('option:selected').attr('image-url');
+                $newSelect.before('<span class="select-image" style="background-image:url(' + imgPreviewUrl + ')"></span>');
+                $newSelect.addClass('has-select-image');
+            }
 
             $('body').append(options);
             // Check if section element is disabled
@@ -344,7 +355,6 @@
             $select.addClass('initialized');
 
             $newSelect.on('focus', function () {
-                console.log('focus');
                 $(this).trigger('open');
                 label = $(this).val();
                 selectedOption = options.find('li').filter(function () {
