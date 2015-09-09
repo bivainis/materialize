@@ -19,11 +19,14 @@
         var origin = $(this);
 
       // Create Text span
-      var tooltip_text = $('<span></span>').text(origin.attr('data-tooltip'));
+      //var tooltip_text = $('<span></span>').text(origin.attr('data-tooltip'));
+        var tooltip_html = $.parseHTML(origin.attr('data-tooltip'));
+        var tooltip_text = $('<span></span>');
+        tooltip_text.innerHTML = tooltip_html;
 
       // Create tooltip
       var newTooltip = $('<div></div>');
-      newTooltip.addClass('material-tooltip').append(tooltip_text);
+      newTooltip.addClass('material-tooltip').append(tooltip_html);
       newTooltip.appendTo($('body'));
 
       var backdrop = $('<div></div>').addClass('backdrop');
